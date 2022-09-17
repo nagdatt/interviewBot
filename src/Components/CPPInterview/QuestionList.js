@@ -16,7 +16,7 @@ export default function QuestionList(props) {
   React.useEffect(()=>{
     
 
-    db.collection("oopsquestions").onSnapshot((querySnapshot) => {
+    db.collection("cppquestions").onSnapshot((querySnapshot) => {
              
       // Loop through the data and store
       // it in array to display

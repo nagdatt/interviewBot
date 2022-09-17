@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
-import getOOPQ from "./../../Questions/OOPQues";
+import getOOPQ from "./../../Questions/PYTHONQues";
 import askQuestion from "./../../Questions/AskQuestion";
 import ButtonGroup from '@mui/material/ButtonGroup';
 

@@ -15,7 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 // const onCodeChnage=(newCode)=>{
 //   setCode(newCode)
 // }
-export default function OOPSInterview() {
+export default function CPPInterview() {
   const [answer, setAnswer] = React.useState("");
   const [question,setQuestion]=React.useState("");
 

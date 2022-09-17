@@ -1,34 +1,32 @@
 import React from "react";
 import useRecorder from "./useRecorder";
 import Button from '@mui/material/Button';
-import { Grid } from '@mui/material';
+import { ButtonGroup, Grid } from '@mui/material';
 
 export default function Recorder() {
     const [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     return (
-      <div style={{
-        marginTop:"20px"
-      }}>
-    
-       <Button variant="contained" color="success" onClick={()=>{startRecording()}} disabled={isRecording}>
-          start rec.
+      <Grid >
+    <Grid display={"center"} alignContent="center" justifyContent={"center"} >
+      <ButtonGroup>
+      <Button variant="contained" color="success" onClick={()=>{startRecording()}} disabled={isRecording}>
+       <i class="bi bi-mic"></i>
         </Button>
         <Button 
         variant="contained" color="error"
-        style={{
-            marginLeft:"10px"
-        }}
+        
         onClick={()=>{stopRecording()
         }} disabled={!isRecording}>
-          stop rec.
+         <i class="bi bi-mic-mute"></i>
         </Button>
-  
+      </ButtonGroup>
+  </Grid>
         <p>
           <em></em>
         </p>
         <audio src={audioURL} controls  />
       
 
-      </div>
+      </Grid>
     );
 }

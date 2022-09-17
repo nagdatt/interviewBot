@@ -2,10 +2,10 @@ import React from 'react'
 import Recorder from './Recorder/Recorder'
 export default function InterViewer() {
   return (
-  <div>
+  <div >
       <div
     style={{
-        width: "300px",
+        width: "100%",
         height: "200px",
         border: "2px solid black",
         alignContent:"center",
@@ -17,7 +17,18 @@ export default function InterViewer() {
 
 InterViewer
     </div>
-    <Recorder/>
+   <div  style={{
+        width: "100%",
+        height: "200px",
+        display:"flex",
+        alignContent:"center",
+        justifyContent:"center",
+       marginTop:"20px"
+        
+        
+    }}>
+   <Recorder />
+   </div>
   </div>
   )
 }

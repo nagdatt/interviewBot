@@ -1,7 +1,7 @@
 import { db } from "./../firebase.config";
 const array = [];
 const answers = [];
-db.collection("oopsquestions").onSnapshot((querySnapshot) => {
+db.collection("pythonquestion").onSnapshot((querySnapshot) => {
   // Loop through the data and store
   // it in array to display
 
