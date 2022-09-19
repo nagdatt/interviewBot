@@ -4,18 +4,19 @@ import { Button, Grid } from "@mui/material";
 import { db } from "./../../firebase.config";
 import Snackbar from '@mui/material/Snackbar';
 import Autocomplete from '@mui/material/Autocomplete';
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import MuiAlert from "@mui/material/Alert";
-import { useLocation } from "react-router-dom";
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 export default function AddQuestion() {
+
   const [question, setQuestion] = React.useState("");
   const [answer, setAnswer] = React.useState("");
     const options=["OOP","DBMS","CPP","Python","HR"]
     const [option,setOption]=React.useState("")
+    
   
   const [open, setOpen] = React.useState(false);
   const [user, setUser] = React.useState(null);
