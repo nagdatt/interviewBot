@@ -1,14 +1,28 @@
 import { db } from "./../firebase.config";
+import { getAuth } from "firebase/auth";
+
 const array = [];
 const answers = [];
+const ids=[];
 db.collection("cppquestions").onSnapshot((querySnapshot) => {
   // Loop through the data and store
   // it in array to display
+  const auth = getAuth();
 
+    const user = auth.currentUser;
   querySnapshot.forEach((element) => {
+    const userId=user?.reloadUserInfo?.localId;
     var data = element.data();
     array.push(data.Question);
-    answers.push(data.Answer);
+    var ans=data.Answer;
+      
+    if(data.useranswers){
+     
+    ans=data.useranswers[userId]
+    }
+    console.log(data.Question,ans?ans:data.Answer)
+    answers.push(ans?ans:data.Answer);
+    ids.push(element.id);
   });
 });
 
@@ -16,46 +30,48 @@ let check = new Map();
 const getOOPQ = () => {
   var item = "Questions are finished";
   var answer = "Goto home and sleep.. 🧑‍🎤🧑‍🚀";
+  var id=null;
   if (check.size == 0) {
-    item = "Tell me about your self";
-    answer="\
-Elaborate your self using these points\n\
--Your Name\t-Collage Name\t-Previous Degree\\Collage\t-Internships (if any)\t-Elaborate internship in few words (if any)\n\
--Skills\t-Acheivements\
-    "
+    item = array[0];
+    answer=answers[0]
+    id=ids[0]
     check.set(item, 1);
     return  {
         question: item,
         answer: answer,
+        id:id
       };;
   }
   if (check.size == 1) {
-    item =
-      "Have you done any projects? If yes, please elaborate any one out of it.";
-      answer="Describe any project (best project)"
+    item = array[1];
+    answer=answers[1]
+    id=ids[1]
 
     check.set(item, 1);
     return  {
         question: item,
         answer: answer,
+        id:id,
       };;
   }
   while (true) {
-    if (check.size == arr.length + 2) {
+    if (check.size == array.length ) {
       item = "Questions are finished";
       const obj = {
         question: item,
         answer: answer,
+        id:id
       };
       return obj;
     }
-    const idx = Math.floor(Math.random() * arr.length);
-    item = arr[idx];
+    const idx = Math.floor(Math.random() * array.length);
+    item = array[idx];
     if (check.has(item)) {
       continue;
     } else {
       check.set(item, 1);
       answer=answers[idx];
+      id=ids[idx]
       break;
     }
   }
@@ -63,8 +79,11 @@ Elaborate your self using these points\n\
   return {
     question: item,
     answer: answer,
+    id:id
+    
   };
 };
 
 export default getOOPQ;
 export const arr = array;
+

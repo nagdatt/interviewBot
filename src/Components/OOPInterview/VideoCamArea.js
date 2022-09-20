@@ -15,6 +15,8 @@ export default function VideoCamArea(props) {
     const obj = getOOPQ();
     askQuestion(obj.question);
     props.setAnswer(obj.answer);
+    console.log(obj)
+    props.setId(obj.id)
   };
   const startCamera = () => {
     setCamButtonDisabled(true);

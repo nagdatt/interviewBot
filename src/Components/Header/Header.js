@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
-import { Divider } from "@mui/material";
+import { Divider, Tooltip } from "@mui/material";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import Avatar from "@mui/material/Avatar";
 
@@ -51,7 +51,7 @@ const Header = () => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUser(user);
-        console.log(user.reloadUserInfo.localId)
+        console.log(user.reloadUserInfo.localId);
         // ...
       } else {
         // User is signed out
@@ -106,7 +106,7 @@ const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map(({ name, path }) => (
-              <Link to={path} style={{ textDecoration: "none" }} >
+              <Link to={path} style={{ textDecoration: "none" }}>
                 <Button
                   key={name}
                   sx={{ my: 2, color: "white", display: "block" }}
@@ -117,7 +117,7 @@ const Header = () => {
             ))}
 
             <Button sx={{ my: 2, color: "white", display: "block" }}>
-              <Badge badgeContent={"do it"} color="success">
+              <Badge badgeContent={"do it !"} color="success">
                 <a
                   target="_blank"
                   style={{ textDecoration: "none", color: "white" }}
@@ -127,6 +127,19 @@ const Header = () => {
                 </a>
               </Badge>
             </Button>
+            <Tooltip title="Comming Soon">
+            <Button
+              
+              sx={{ my: 2, display: "block" }}
+            
+              color="primary"
+              variant="outlined"
+              
+              style={{background:"white",marginLeft: "20px",color:"rgb(25, 118, 210)"}}
+            >
+              <b>Others </b><i class="bi bi-caret-down-fill"></i>
+            </Button>
+            </Tooltip>
           </Box>
           {user?.displayName}
           <div>
@@ -138,7 +151,7 @@ const Header = () => {
               onClick={handleMenu}
               color="inherit"
             >
-            <Avatar
+              <Avatar
                 src={user?.photoURL}
                 alt={user?.email}
                 sx={{ bgcolor: deepOrange[500] }}
@@ -161,10 +174,17 @@ const Header = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose} disabled>
+                <i class="bi bi-sliders" style={{ marginRight: "5px" }}></i>{" "}
                 Account Settings
               </MenuItem>
               <Divider />
-              <MenuItem onClick={handlesignOut}>Logout</MenuItem>
+              <MenuItem onClick={handlesignOut}>
+                <i
+                  class="bi bi-box-arrow-right "
+                  style={{ marginRight: "5px" }}
+                ></i>{" "}
+                Logout
+              </MenuItem>
             </Menu>
           </div>
         </Toolbar>

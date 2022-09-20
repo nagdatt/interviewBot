@@ -54,7 +54,7 @@ export default function CPPInterview() {
    <div style={{ margin: "20px" }}>
      <Grid container spacing={1}>
       <Grid xs={6} md={5} style={{ padding: "20px" }}>
-        <VideoCamArea setAnswerVisibility={setAnswerVisibility} answerVisibility={answerVisibility} setQuestion={setQuestion} setAnswer={setAnswer}/>
+        <VideoCamArea setId={setId} setAnswerVisibility={setAnswerVisibility} answerVisibility={answerVisibility} setQuestion={setQuestion} setAnswer={setAnswer}/>
       </Grid>
       <Grid  xs={6} md={3} style={{ padding: "20px" }}>
         <InterViewer />
